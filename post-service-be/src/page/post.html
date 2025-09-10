@@ -1,0 +1,8 @@
+<article>
+  <h1>{{title}}</h1>
+  <p><small>{{formatDate publishedAt}} — {{author}}</small></p>
+  <div class="content">
+    {{{contentHtml}}}
+  </div>
+  {{#if tags.length}}<p>Tags: {{tags.join ', '}}</p>{{/if}}
+</article>

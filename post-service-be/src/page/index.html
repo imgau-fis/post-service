@@ -1,0 +1,9 @@
+<section>
+  {{#each posts}}
+    <article>
+      <h2><a href="/p/{{slug}}">{{title}}</a></h2>
+      <p><small>{{formatDate publishedAt}} — {{author}}</small></p>
+      {{#if excerpt}}<p>{{excerpt}}</p>{{/if}}
+    </article>
+  {{/each}}
+</section>

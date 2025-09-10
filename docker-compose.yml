@@ -1,0 +1,36 @@
+services:
+  backend:
+    build:
+      context: ./post-service-be
+    ports:
+      - "8081:8080"
+    volumes:
+      - ./post-service-be:/app
+    environment:
+      - DATABASE_URL=postgres://postgres:postgres@db:5432/postgres
+    depends_on:
+      - db
+
+  frontend:
+    build:
+      context: ./post-service-fe
+    ports:
+      - "5173:5173"
+    volumes:
+      - ./post-service-fe:/app
+    environment:
+      - PORT=5173
+
+  db:
+    image: postgres:15
+    ports:
+      - "5433:5432"
+    environment:
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: postgres
+      POSTGRES_DB: postgres
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+
+volumes:
+  postgres_data:
